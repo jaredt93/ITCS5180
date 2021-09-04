@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">InClass03</string>
-    <string name="mainActivity">Main Activity</string>
-    <string name="alertButton">SHOW ALERT DIALOG</string>
-    <string name="explicitIntentActivity">Explicit Intent</string>
-    <string name="implicitIntentActivity">Implicit Intent</string>
-</resources>

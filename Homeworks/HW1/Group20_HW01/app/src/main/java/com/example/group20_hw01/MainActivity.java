@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +23,8 @@ import java.text.DecimalFormat;
  * Student Name: Myat Win
  */
 public class MainActivity extends AppCompatActivity {
+
+    final static String TAG = "HW01";
 
     // Declare variables
     EditText billTotalEntry;
@@ -136,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             billTotal = Double.parseDouble(billTotalEntry.getText().toString());
         } catch (Exception e) {
-            System.out.println("Invalid entry.");
+            Log.d(TAG, "updateUI: Invalid bill total.");
         }
 
         double tipAmount = calculateTip(billTotal, tipPercentage);

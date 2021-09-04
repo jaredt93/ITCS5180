@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Tip Calculator</string>
+    <string name="billTotalLabel">Bill Total:</string>
+    <string name="billTotalHint">Enter Bill Total</string>
+    <string name="tipPercentageLabel">Tip %:</string>
+    <string name="radioGroupTipButton10">10%</string>
+    <string name="radioGroupTipButton15">15%</string>
+    <string name="radioGroupTipButton18">18%</string>
+    <string name="radioGroupTipButtonCustom">Custom</string>
+    <string name="customLabel">Custom:</string>
+    <string name="customText">40%</string>
+    <string name="tipLabel">Tip:</string>
+    <string name="tip">$0.00</string>
+    <string name="totalLabel">Total:</string>
+    <string name="total">$0.00</string>
+    <string name="splitByLabel">Split By:</string>
+    <string name="radioGroupSplitByButtonOne">One</string>
+    <string name="radioGroupSplitByButtonTwo">Two</string>
+    <string name="radioGroupSplitByButtonThree">Three</string>
+    <string name="radioGroupSplitByButtonFour">Four</string>
+    <string name="totalPerPersonLabel">Total/Person:</string>
+    <string name="totalPerPerson">$0.00</string>
+    <string name="buttonClear">Clear</string>
+    <string name="customTitle">Tip Calculator</string>
+</resources>

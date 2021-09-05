@@ -85,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
         seekBarCustom.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
                 StringBuilder progressText = new StringBuilder(String.valueOf(progress));
                 progressText.append("%");
                 customText.setText(progressText);

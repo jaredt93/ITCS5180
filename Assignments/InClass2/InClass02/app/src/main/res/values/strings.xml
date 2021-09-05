@@ -3,4 +3,12 @@
     <string name="ticketPrice">Ticket Price:</string>
     <string name="discountLabel">Discount:</string>
     <string name="discountedPriceLabel">Discounted Price:</string>
+    <string name="buttonCalculate">Calculate</string>
+    <string name="buttonClear">Clear</string>
+    <string name="radioButton50">50%</string>
+    <string name="radioButton20">20%</string>
+    <string name="radioButton15">15%</string>
+    <string name="radioButton10">10%</string>
+    <string name="radioButton5">5%</string>
+    <string name="ticketPriceEntry">Enter Ticket Price</string>
 </resources>

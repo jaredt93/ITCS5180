@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Group20_InClass03</string>
+    <string name="textViewName">Name:</string>
+    <string name="textViewEmail">Email:</string>
+    <string name="textViewID">ID:</string>
+    <string name="textViewDept">Dept:</string>
+    <string name="buttonSelect">Select</string>
+    <string name="buttonSubmit">Submit</string>
+    <string name="editTextNameHint">Enter Name</string>
+    <string name="editTextEmailHint">Enter Email</string>
+    <string name="editTextIDHint">Enter ID</string>
+    <string name="radioButtonCS">Computer Science</string>
+    <string name="radioButtonSIS">Software Info. Systems</string>
+    <string name="radioButtonBI">Bio Informatics</string>
+    <string name="radioButtonDS">Data Science</string>
+    <string name="buttonCancel">Cancel</string>
+</resources>

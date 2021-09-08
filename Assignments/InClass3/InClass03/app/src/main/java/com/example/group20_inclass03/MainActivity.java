@@ -6,10 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /*
  * Assignment: In Class Assignment #03
@@ -19,9 +21,10 @@ import android.widget.TextView;
  */
 public class MainActivity extends AppCompatActivity {
 
-    // codes
+    // codes, keys, and tags
     final String TAG = "InClass03 Log";
     final static public int REQ_CODE = 100;
+    final static public String PROFILE_KEY = "PROFILE";
 
     // Declare variables
     EditText editTextName;
@@ -45,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         buttonSelect = findViewById(R.id.buttonSelect);
         buttonSubmit = findViewById(R.id.buttonSubmit);
 
-        // Select Button Actions
+        // Select Button Actions, use start activity for result
         buttonSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Submit Button Actions
+        // Submit Button Actions, using explicit intent
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,8 +66,16 @@ public class MainActivity extends AppCompatActivity {
                 String id = editTextID.getText().toString();
                 String department = departmentValue.getText().toString();
 
+                if(name.trim().isEmpty() || email.trim().isEmpty() || id.trim().isEmpty() || department.isEmpty()) {
+                    Toast toast = Toast.makeText(MainActivity.this, "Invalid input.", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 100);
+                    toast.show();
+                } else {
+                    Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                    intent.putExtra(PROFILE_KEY, new Profile(name, email, id, department));
 
-
+                    startActivity(intent);
+                }
             }
         });
 

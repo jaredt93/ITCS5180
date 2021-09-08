@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -66,11 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 String id = editTextID.getText().toString();
                 String department = departmentValue.getText().toString();
 
-                if(name.trim().isEmpty() || email.trim().isEmpty() || id.trim().isEmpty() || department.isEmpty()) {
-                    Toast toast = Toast.makeText(MainActivity.this, "Invalid input.", Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 100);
-                    toast.show();
-                } else {
+                if (validate(name, email, id, department)) {
                     Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
                     intent.putExtra(PROFILE_KEY, new Profile(name, email, id, department));
 
@@ -99,4 +96,40 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+    // Validates fields, sends toast messages based on input
+    public boolean validate(String name, String email, String id, String department) {
+        boolean valid = true;
+
+        if(name.trim().isEmpty()) {
+            Toast toast = Toast.makeText(MainActivity.this, "Please enter a name!", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 100);
+            toast.show();
+            valid = false;
+        }
+
+        if(email.trim().isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            Toast toast = Toast.makeText(MainActivity.this, "Please enter a valid email!", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 100);
+            toast.show();
+            valid = false;
+        }
+
+        if(id.trim().isEmpty()) {
+            Toast toast = Toast.makeText(MainActivity.this, "Please enter a ID!", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 100);
+            toast.show();
+            valid = false;
+        }
+
+        if(department.isEmpty()) {
+            Toast toast = Toast.makeText(MainActivity.this, "Please select a department!", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 100);
+            toast.show();
+            valid = false;
+        }
+
+        return valid;
+    }
+
 }

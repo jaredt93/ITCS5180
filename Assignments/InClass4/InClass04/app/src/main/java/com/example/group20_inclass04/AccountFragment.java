@@ -54,7 +54,7 @@ public class AccountFragment extends Fragment {
         view.findViewById(R.id.buttonEdit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mListener.gotoUpdateAccount(account);
+                mListener.gotoUpdateAccount();
             }
         });
 
@@ -75,7 +75,7 @@ public class AccountFragment extends Fragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
 
-        if(context instanceof RegisterFragment.RegisterListener) {
+        if(context instanceof AccountFragment.AccountListener) {
             mListener = (AccountFragment.AccountListener) context;
         } else {
             throw new RuntimeException((context.toString() + "must implement AccountListener"));
@@ -84,6 +84,7 @@ public class AccountFragment extends Fragment {
 
     public interface AccountListener {
         void gotoLogin();
-        void gotoUpdateAccount(DataServices.Account account);
+        void gotoUpdateAccount();
+        void deleteAccount();
     }
 }

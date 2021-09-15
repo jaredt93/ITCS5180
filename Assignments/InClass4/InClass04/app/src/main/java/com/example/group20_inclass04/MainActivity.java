@@ -13,9 +13,10 @@ import android.widget.Button;
  * Student Name: Jared Tamulynas
  * Student Name: Myat Win
  */
-public class MainActivity extends AppCompatActivity implements LoginFragment.LoginListener, RegisterFragment.RegisterListener, AccountFragment.AccountListener {
+public class MainActivity extends AppCompatActivity implements LoginFragment.LoginListener, RegisterFragment.RegisterListener, AccountFragment.AccountListener, UpdateAccountFragment.UpdateAccountListener {
 
     Button buttonCreate;
+    DataServices.Account account;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.containerView, new LoginFragment(), "fragment")
                 .commit();
+
     }
 
 
@@ -43,18 +45,35 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
     }
 
     @Override
-    public void gotoAccount(DataServices.Account account) {
+    public void gotoAccount() {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.containerView, AccountFragment.newInstance(account), "fragment")
                 .commit();
     }
 
     @Override
-    public void gotoUpdateAccount(DataServices.Account account) {
+    public void popBack() {
+        getSupportFragmentManager().popBackStack();
+        gotoAccount();
+    }
+
+    @Override
+    public void setAccount(DataServices.Account account) {
+        this.account = account;
+        AccountFragment.newInstance(account);
+    }
+
+    @Override
+    public void gotoUpdateAccount() {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.containerView, UpdateAccountFragment.newInstance(account), "fragment")
                 .addToBackStack(null)
                 .commit();
+    }
+
+    @Override
+    public void deleteAccount() {
+        this.account = null;
     }
 
 }

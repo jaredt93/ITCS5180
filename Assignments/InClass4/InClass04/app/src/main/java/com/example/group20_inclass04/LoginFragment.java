@@ -49,7 +49,8 @@ public class LoginFragment extends Fragment {
 
                     if (task.isSuccessful()) { //successful
                         DataServices.Account account = task.getAccount();
-                        mListener.gotoAccount(account);
+                        mListener.setAccount(account);
+                        mListener.gotoAccount();
                     } else { //not successful
                         String error = task.getErrorMessage();
                         Toast.makeText(view.getContext(), error, Toast.LENGTH_SHORT).show();
@@ -84,7 +85,8 @@ public class LoginFragment extends Fragment {
 
     public interface LoginListener {
         void gotoRegister();
-        void gotoAccount(DataServices.Account account);
+        void gotoAccount();
+        void setAccount(DataServices.Account account);
     }
 
 }

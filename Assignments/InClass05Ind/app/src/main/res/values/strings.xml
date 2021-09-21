@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">InClass05_Ind</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="buttonSubmit">Submit</string>
+    <string name="editTextFirst">First Name</string>
+    <string name="editTextLast">Last Name</string>
+</resources>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Group20_HW02</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="buttonFilter">Filter</string>
+    <string name="buttonSort">Sort</string>
+    <string name="textViewName">Name</string>
+    <string name="textViewState">State</string>
+    <string name="textViewAge">Age</string>
+    <string name="textViewGroup">Group</string>
+    <string name="imageViewGender">Gender</string>
+    <string name="textViewSortAttribute">Sort Attribute</string>
+    <string name="imageButtonAscending">Button Ascending</string>
+    <string name="imageButtonDescending">Button Descending</string>
+</resources>

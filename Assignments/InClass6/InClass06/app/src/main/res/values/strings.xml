@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Group20_InClass06</string>
+    <string name="buttonGenerate">Generate</string>
+    <string name="textViewComplexityLabel">Select Complexity</string>
+    <string name="textViewComplexity">Complexity</string>
+    <string name="textViewAverageLabel">Average:</string>
+    <string name="textViewGeneratedNumbers"></string>
+    <string name="textViewAverage"></string>
+</resources>

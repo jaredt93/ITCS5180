@@ -28,7 +28,6 @@ public class SortRecyclerViewAdapter extends RecyclerView.Adapter<SortRecyclerVi
     @NonNull
     @Override
     public SortAttributeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // Using card views
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sort_row_item, parent, false);
         SortAttributeViewHolder sortAttributeViewHolder = new SortAttributeViewHolder(view, mListener);
         return sortAttributeViewHolder;

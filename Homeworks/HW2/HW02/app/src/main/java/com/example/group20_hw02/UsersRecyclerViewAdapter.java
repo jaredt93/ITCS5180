@@ -23,7 +23,6 @@ public class UsersRecyclerViewAdapter extends RecyclerView.Adapter<UsersRecycler
     @NonNull
     @Override
     public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // Using card views
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_row_item, parent, false);
         UserViewHolder userViewHolder = new UserViewHolder(view);
         return userViewHolder;
@@ -41,7 +40,6 @@ public class UsersRecyclerViewAdapter extends RecyclerView.Adapter<UsersRecycler
         } else {
             holder.imageViewGender.setImageResource(R.drawable.avatar_female);
         }
-        holder.position = position;
         holder.user = user;
     }
 

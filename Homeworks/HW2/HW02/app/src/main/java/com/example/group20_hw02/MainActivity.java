@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity implements UsersFragment.Use
     String state = "All States";
     String sortAttribute;
     Boolean ascending;
-    final String USERS_FRAGMENT_TAG = "Fragment Tag";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements UsersFragment.Use
 
         // Set opening fragment to UsersFragment
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.rootView, UsersFragment.newInstance(state, sortAttribute, ascending), USERS_FRAGMENT_TAG)
+                .add(R.id.rootView, UsersFragment.newInstance(state, sortAttribute, ascending))
                 .commit();
     }
 
@@ -60,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements UsersFragment.Use
         getSupportFragmentManager().popBackStack();
 
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.rootView, UsersFragment.newInstance(state, sortAttribute, ascending), USERS_FRAGMENT_TAG)
+                .replace(R.id.rootView, UsersFragment.newInstance(state, sortAttribute, ascending))
                 .commit();
     }
 
@@ -71,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements UsersFragment.Use
         getSupportFragmentManager().popBackStack();
 
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.rootView, UsersFragment.newInstance(state, sortAttribute, ascending), USERS_FRAGMENT_TAG)
+                .replace(R.id.rootView, UsersFragment.newInstance(state, sortAttribute, ascending))
                 .commit();
     }
 

@@ -114,6 +114,7 @@ public class UsersFragment extends Fragment {
                     position++;
                 }
             }
+            adapter.notifyDataSetChanged();
         }
     }
 
@@ -134,7 +135,6 @@ public class UsersFragment extends Fragment {
                     } else {
                         return order * u1.state.compareTo(u2.state);
                     }
-
                 }
             });
         }

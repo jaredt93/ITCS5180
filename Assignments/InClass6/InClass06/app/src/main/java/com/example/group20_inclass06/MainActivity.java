@@ -83,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 complexity = binding.seekBarComplexity.getProgress();
-
                 binding.progressBar.setProgress(0);
                 binding.textViewGeneratedNumbers.setText("");
                 average = 0;
@@ -98,9 +97,8 @@ public class MainActivity extends AppCompatActivity {
                     threadPool = Executors.newFixedThreadPool(2);
                     threadPool.execute(new GetNumber(complexity));
                 } else {
-                    Toast.makeText(MainActivity.this, "Complexity should be 1 or above.", Toast.LENGTH_SHORT);
+                    Toast.makeText(MainActivity.this, "Complexity should be 1 or above.", Toast.LENGTH_SHORT).show();
                 }
-
 
             }
         });

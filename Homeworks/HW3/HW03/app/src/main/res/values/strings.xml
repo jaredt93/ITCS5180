@@ -12,13 +12,13 @@
     <string name="textViewWindDegree">Wind Degree</string>
     <string name="textViewCloudiness">Cloudiness</string>
     <string name="buttonCheckForecast">Check Forecast</string>
-    <string name="temp">temp</string>
-    <string name="tempMax">tempMax</string>
-    <string name="tempMin">tempMin</string>
-    <string name="description">description</string>
-    <string name="humidity">humidity</string>
-    <string name="windSpeed">windSpeed</string>
-    <string name="windDegree">windDegree</string>
-    <string name="cloudiness">cloudiness</string>
-    <string name="textViewDateTime">Date Time</string>
+    <string name="temp"></string>
+    <string name="tempMax"></string>
+    <string name="tempMin"></string>
+    <string name="description"></string>
+    <string name="humidity"></string>
+    <string name="windSpeed"></string>
+    <string name="windDegree"></string>
+    <string name="cloudiness"></string>
+    <string name="textViewDateTime"></string>
 </resources>

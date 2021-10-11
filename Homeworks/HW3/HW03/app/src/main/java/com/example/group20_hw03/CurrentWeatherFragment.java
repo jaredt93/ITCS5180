@@ -95,8 +95,6 @@ public class CurrentWeatherFragment extends Fragment {
                 .addQueryParameter("units", units)
                 .build();
 
-        Log.d("demo", "retrieveCurrentWeather: " + url);
-
         Request request = new Request.Builder()
                 .url(url)
                 .build();

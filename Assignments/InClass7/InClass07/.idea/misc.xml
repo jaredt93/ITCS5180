@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/JWT/Developer/ITCS5180/Assignments/InClass7/InClass07/app/src/main/res/layout/contact_row_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/JWT/Developer/ITCS5180/Assignments/InClass7/InClass07/app/src/main/res/layout/fragment_contact_details.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/JWT/Developer/ITCS5180/Assignments/InClass7/InClass07/app/src/main/res/layout/fragment_contacts_list.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/JWT/Developer/ITCS5180/Assignments/InClass7/InClass07/app/src/main/res/layout/fragment_edit_contact.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/JWT/Developer/ITCS5180/Assignments/InClass7/InClass07/app/src/main/res/layout/fragment_new_contact.xml" value="0.36666666666666664" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.16847826086956522" />
         <entry key="app/src/main/res/layout/contact_row_item.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_contact_details.xml" value="0.25" />

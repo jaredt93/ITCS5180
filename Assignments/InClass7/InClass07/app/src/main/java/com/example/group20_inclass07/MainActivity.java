@@ -14,7 +14,7 @@ import okhttp3.OkHttpClient;
  * Student Name: Jared Tamulynas
  * Student Name: Myat Win
  */
-public class MainActivity extends AppCompatActivity implements ContactsListFragment.ContactsListListener, NewContactFragment.NewContactListener {
+public class MainActivity extends AppCompatActivity implements ContactsListFragment.ContactsListListener, NewContactFragment.NewContactListener, ContactDetailsFragment.ContactDetailsListener, EditContactFragment.EditContactListener {
     ActivityMainBinding binding;
     Contact contact;
 
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements ContactsListFragm
         setContentView(binding.getRoot());
 
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.rootView, new ContactsListFragment(), "tag")
+                .add(R.id.rootView, new ContactsListFragment(), "contacts-list")
                 .commit();
     }
 
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements ContactsListFragm
         this.contact = contact;
 
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.rootView, ContactDetailsFragment.newInstance(contact))
+                .replace(R.id.rootView, ContactDetailsFragment.newInstance(contact), "contact-details")
                 .addToBackStack(null)
                 .commit();
     }
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements ContactsListFragm
 
     @Override
     public void gotoContactsList() {
-        ContactsListFragment fragment = (ContactsListFragment) getSupportFragmentManager().findFragmentByTag("tag");
+        ContactsListFragment fragment = (ContactsListFragment) getSupportFragmentManager().findFragmentByTag("contacts-list");
 
         if(fragment != null) {
             fragment.getContacts();
@@ -58,4 +58,33 @@ public class MainActivity extends AppCompatActivity implements ContactsListFragm
         getSupportFragmentManager().popBackStack();
     }
 
+    @Override
+    public void gotoContactsList(Contact contact) {
+        ContactsListFragment fragment = (ContactsListFragment) getSupportFragmentManager().findFragmentByTag("contacts-list");
+
+        if(fragment != null) {
+            fragment.deleteContact(contact);
+        }
+
+        getSupportFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void gotoEditContact(Contact contact) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.rootView, EditContactFragment.newInstance(contact))
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void updateContact(Contact contact) {
+        ContactDetailsFragment fragment = (ContactDetailsFragment) getSupportFragmentManager().findFragmentByTag("contact-details");
+
+        if(fragment != null) {
+            fragment.updateContact(contact.getName(), contact.getPhoneNumber(), contact.getEmail(), contact.getType());
+        }
+
+        getSupportFragmentManager().popBackStack();
+    }
 }

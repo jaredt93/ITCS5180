@@ -9,16 +9,18 @@ public class Contact implements Serializable {
     String email;
     String phoneNumber;
     String type;
+    String id;
 
     public Contact() {
-        // emplty constructor
+        // empty constructor
     }
 
-    public Contact(String name, String email, String phoneNumber, String type) {
+    public Contact(String name, String email, String phoneNumber, String type, String id) {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.type = type;
+        this.id = id;
     }
 
     public String getName() {
@@ -51,5 +53,13 @@ public class Contact implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

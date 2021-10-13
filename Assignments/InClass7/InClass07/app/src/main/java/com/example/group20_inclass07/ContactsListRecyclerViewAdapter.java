@@ -1,5 +1,6 @@
 package com.example.group20_inclass07;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,11 +31,12 @@ public class ContactsListRecyclerViewAdapter extends RecyclerView.Adapter<Contac
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
         Contact contact = contacts.get(position);
+        holder.contact = contact;
+
         holder.textViewName.setText(contact.name);
         holder.textViewEmail.setText(contact.email);
         holder.textViewPhoneNumber.setText(contact.phoneNumber);
         holder.textViewType.setText(contact.type);
-        holder.contact = contact;
     }
 
     public void remove(int position) {
@@ -53,6 +55,7 @@ public class ContactsListRecyclerViewAdapter extends RecyclerView.Adapter<Contac
         TextView textViewEmail;
         TextView textViewPhoneNumber;
         TextView textViewType;
+
         View rootView;
         int position;
         Contact contact;
@@ -62,6 +65,7 @@ public class ContactsListRecyclerViewAdapter extends RecyclerView.Adapter<Contac
             super(itemView);
             rootView = itemView;
             this.mListener = mListener;
+
             textViewName = itemView.findViewById(R.id.textViewName);
             textViewEmail = itemView.findViewById(R.id.textViewEmail);
             textViewPhoneNumber = itemView.findViewById(R.id.textViewPhoneNumber);

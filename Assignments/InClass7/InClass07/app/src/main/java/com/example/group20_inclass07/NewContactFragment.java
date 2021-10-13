@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.group20_inclass07.databinding.FragmentContactsListBinding;
@@ -44,7 +45,6 @@ public class NewContactFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentNewContactBinding.inflate(inflater, container, false);
         getActivity().setTitle("New Contact");
-
         return binding.getRoot();
     }
 
@@ -65,7 +65,15 @@ public class NewContactFragment extends Fragment {
                 String name = binding.editTextName.getText().toString();
                 String email = binding.editTextEmail.getText().toString();
                 String phoneNumber = binding.editTextPhoneNumber.getText().toString();
-                String type = binding.editTextType.getText().toString();
+                String type = "CELL";
+
+                int id = binding.radioGroupType.getCheckedRadioButtonId();
+
+                if(id == R.id.radioButtonOffice) {
+                    type = "OFFICE";
+                } else if(id == R.id.radioButtonHome) {
+                    type = "HOME";
+                }
 
                 if(name.isEmpty() || name == null) {
                     Toast.makeText(view.getContext(), "Invalid name entry.", Toast.LENGTH_SHORT).show();
@@ -73,11 +81,8 @@ public class NewContactFragment extends Fragment {
                     Toast.makeText(view.getContext(), "Invalid email entry.", Toast.LENGTH_SHORT).show();
                 } else if(phoneNumber.isEmpty() || phoneNumber == null) {
                     Toast.makeText(view.getContext(), "Invalid phone number entry.", Toast.LENGTH_SHORT).show();
-                } else if(type.isEmpty() || type == null) {
-                    Toast.makeText(view.getContext(), "Invalid type entry.", Toast.LENGTH_SHORT).show();
                 } else {
                     createContact(name, email, phoneNumber, type);
-                    mListener.gotoContactsList();
                 }
             }
         });
@@ -109,7 +114,13 @@ public class NewContactFragment extends Fragment {
                 if(response.isSuccessful()) {
                     ResponseBody responseBody = response.body();
                     String body = responseBody.string();
-                    Log.d("demo", "onResponse: " + body);
+
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mListener.gotoContactsList();
+                        }
+                    });
                 }
             }
         });

@@ -32,6 +32,13 @@ public class ContactDetailsFragment extends Fragment {
     private static final String ARG_PARAM_CONTACT = "ARG_PARAM_CONTACT";
     private Contact contact;
 
+    public void updateContact(String name, String phoneNumber, String email, String type) {
+        contact.setName(name);
+        contact.setPhoneNumber(phoneNumber);
+        contact.setEmail(email);
+        contact.setType(type);
+    }
+
     public ContactDetailsFragment() {
         // Required empty public constructor
     }
@@ -57,6 +64,10 @@ public class ContactDetailsFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentContactDetailsBinding.inflate(inflater, container, false);
         getActivity().setTitle("Contact Details");
+        binding.textViewName.setText(contact.getName());
+        binding.textViewPhoneNumber.setText(contact.getPhoneNumber());
+        binding.textViewEmail.setText(contact.getEmail());
+        binding.textViewType.setText(contact.getType());
         return binding.getRoot();
     }
 
@@ -67,8 +78,7 @@ public class ContactDetailsFragment extends Fragment {
         binding.buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                deleteContact();
-                mListener.gotoContactsList();
+                mListener.gotoContactsList(contact);
             }
         });
 
@@ -79,33 +89,6 @@ public class ContactDetailsFragment extends Fragment {
             }
         });
 
-    }
-
-    void deleteContact() {
-        FormBody formBody = new FormBody.Builder()
-                .build();
-
-        Request request = new Request.Builder()
-                .url("https://www.theappsdr.com/contact/json/delete")
-                .post(formBody)
-                .build();
-
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                e.printStackTrace();
-            }
-
-            // Child thread
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                if(response.isSuccessful()) {
-                    ResponseBody responseBody = response.body();
-                    String body = responseBody.string();
-                    Log.d("demo", "onResponse: " + body);
-                }
-            }
-        });
     }
 
     // Listener
@@ -123,7 +106,7 @@ public class ContactDetailsFragment extends Fragment {
     }
 
     public interface ContactDetailsListener {
-        void gotoContactsList();
+        void gotoContactsList(Contact contact);
         void gotoEditContact(Contact contact);
     }
 

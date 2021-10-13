@@ -26,6 +26,7 @@ import java.util.ArrayList;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.FormBody;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -35,7 +36,6 @@ import okhttp3.ResponseBody;
 public class ContactsListFragment extends Fragment implements ContactsListRecyclerViewAdapter.IContactsListRecycler {
     FragmentContactsListBinding binding;
     private final OkHttpClient client = new OkHttpClient();
-
     ArrayList<Contact> contacts = new ArrayList<>();
     LinearLayoutManager layoutManager;
     ContactsListRecyclerViewAdapter adapter;
@@ -64,17 +64,15 @@ public class ContactsListFragment extends Fragment implements ContactsListRecycl
         adapter = new ContactsListRecyclerViewAdapter(contacts, this);
         binding.recyclerView.setAdapter(adapter);
 
-        getContacts();
-
         return binding.getRoot();
     }
-
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        getContacts();
 
-        binding.buttonAdd.setOnClickListener(new View.OnClickListener() {
+        binding.buttonAddContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mListener.gotoNewContact();
@@ -114,13 +112,13 @@ public class ContactsListFragment extends Fragment implements ContactsListRecycl
                         JSONArray contactsJson = json.getJSONArray("contacts");
 
                         for(int i = 0; i < contactsJson.length(); i++) {
-                            Log.d("demo", "onResponse: " + i);
                             JSONObject contactJsonObject = contactsJson.getJSONObject(i);
                             Contact contact = new Contact();
                             contact.setName(contactJsonObject.getString("Name"));
                             contact.setEmail(contactJsonObject.getString("Email"));
                             contact.setPhoneNumber(contactJsonObject.getString("Phone"));
                             contact.setType(contactJsonObject.getString("PhoneType"));
+                            contact.setId(contactJsonObject.getString("Cid"));
                             contacts.add(contact);
                         }
                     } catch (JSONException e) {
@@ -138,19 +136,6 @@ public class ContactsListFragment extends Fragment implements ContactsListRecycl
         });
     }
 
-    // Listener
-    ContactsListListener mListener;
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-
-        if(context instanceof ContactsListListener) {
-            mListener = (ContactsListListener) context;
-        } else {
-            throw new RuntimeException((context.toString() + "must implement ContactsListListener"));
-        }
-    }
 
     @Override
     public void gotoContactDetails(Contact contact) {
@@ -159,6 +144,10 @@ public class ContactsListFragment extends Fragment implements ContactsListRecycl
 
     @Override
     public void deleteContact(Contact contact) {
+        FormBody formBody = new FormBody.Builder()
+                .add("id", contact.getId())
+                .build();
+
         HttpUrl.Builder builder = new HttpUrl.Builder();
         HttpUrl url = builder.scheme("https")
                 .host("www.theappsdr.com")
@@ -169,6 +158,7 @@ public class ContactsListFragment extends Fragment implements ContactsListRecycl
 
         Request request = new Request.Builder()
                 .url(url)
+                .post(formBody)
                 .build();
 
         client.newCall(request).enqueue(new Callback() {
@@ -187,11 +177,27 @@ public class ContactsListFragment extends Fragment implements ContactsListRecycl
                         @Override
                         public void run() {
                             adapter.notifyDataSetChanged();
+                            getContacts();
                         }
                     });
                 }
             }
         });
+    }
+
+
+    // Listener
+    ContactsListListener mListener;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+
+        if(context instanceof ContactsListListener) {
+            mListener = (ContactsListListener) context;
+        } else {
+            throw new RuntimeException((context.toString() + "must implement ContactsListListener"));
+        }
     }
 
     public interface ContactsListListener {

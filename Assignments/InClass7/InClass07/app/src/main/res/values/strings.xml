@@ -19,5 +19,8 @@
     <string name="labelType">Type:</string>
     <string name="buttonUpdate">Update</string>
     <string name="buttonAdd">Add Contact</string>
+    <string name="radioButtonCell">CELL</string>
+    <string name="radioButtonOffice">OFFICE</string>
+    <string name="radioButtonHome">HOME</string>
     />
 </resources>

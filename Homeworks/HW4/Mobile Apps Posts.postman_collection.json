@@ -1,0 +1,193 @@
+{
+	"info": {
+		"_postman_id": "eb831ed9-0629-4c1b-a245-fac5f919b9d6",
+		"name": "Mobile Apps Posts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/posts/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "a@a.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "test123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://www.theappsdr.com/posts/login",
+					"protocol": "https",
+					"host": [
+						"www",
+						"theappsdr",
+						"com"
+					],
+					"path": [
+						"posts",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/posts/signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "z@a.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "test123",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Alice Smith",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://www.theappsdr.com/posts/signup",
+					"protocol": "https",
+					"host": [
+						"www",
+						"theappsdr",
+						"com"
+					],
+					"path": [
+						"posts",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/posts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "BEARER eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MzQ1ODI4MzAsImV4cCI6MTY2NjExODgzMCwianRpIjoiNTNaUkpQQ3pLZWNhc0lqd3c3T0ZWYiIsInVzZXIiOjF9.JpMUr0SpngJJPrejc_ParV1_kCasu1cq8Y2cUin-BhI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://www.theappsdr.com/posts?page=1",
+					"protocol": "https",
+					"host": [
+						"www",
+						"theappsdr",
+						"com"
+					],
+					"path": [
+						"posts"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1",
+							"description": "Minimum is 1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/posts/create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "BEARER eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MzQ1ODI4MzAsImV4cCI6MTY2NjExODgzMCwianRpIjoiNTNaUkpQQ3pLZWNhc0lqd3c3T0ZWYiIsInVzZXIiOjF9.JpMUr0SpngJJPrejc_ParV1_kCasu1cq8Y2cUin-BhI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "post_text",
+							"value": "This is a test post message 100",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://www.theappsdr.com/posts/create",
+					"protocol": "https",
+					"host": [
+						"www",
+						"theappsdr",
+						"com"
+					],
+					"path": [
+						"posts",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/posts/delete",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "BEARER eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MzQ1ODI4MzAsImV4cCI6MTY2NjExODgzMCwianRpIjoiNTNaUkpQQ3pLZWNhc0lqd3c3T0ZWYiIsInVzZXIiOjF9.JpMUr0SpngJJPrejc_ParV1_kCasu1cq8Y2cUin-BhI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "post_id",
+							"value": "16",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://www.theappsdr.com/posts/delete",
+					"protocol": "https",
+					"host": [
+						"www",
+						"theappsdr",
+						"com"
+					],
+					"path": [
+						"posts",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

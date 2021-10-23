@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Group20_HW04</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="editTextEmail">Email</string>
+    <string name="editTextPassword">Password</string>
+    <string name="buttonLogin">Login</string>
+    <string name="buttonCreateAccount">Create New Account</string>
+    <string name="editTextName">Full Name</string>
+    <string name="buttonSubmit">Submit</string>
+    <string name="buttonCancel">Cancel</string>
+    <string name="buttonCreatePost">Create Post</string>
+    <string name="buttonLogout">Logout</string>
+    <string name="textViewHello">Hello</string>
+    <string name="textViewPageNumber">Showing Page X out of XX</string>
+    <string name="editTextPost">Enter Post</string>
+    <string name="textViewPostText">Post Text</string>
+    <string name="textViewAuthor">Author</string>
+    <string name="textViewTimeStamp">Time Stamp</string>
+    <string name="textViewPage">P</string>
+</resources>

@@ -22,8 +22,15 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
+import com.google.type.DateTime;
 
 import java.lang.reflect.Field;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.HashMap;
 
 public class CreateForumFragment extends Fragment {
@@ -66,12 +73,16 @@ public class CreateForumFragment extends Fragment {
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
                     String id = mAuth.getCurrentUser().getUid();
 
+                    DateFormat dateFormat = new SimpleDateFormat("M/d/yyyy h:mm a");
+                    Date date = new Date();
+                    String strDate = dateFormat.format(date).toString();
+
                     HashMap<String, Object> forum = new HashMap<>();
                     forum.put("title", title);
-                    forum.put("creator", "test");
+                    forum.put("creator", mAuth.getCurrentUser().getDisplayName());
                     forum.put("creatorUid", id);
                     forum.put("description", description);
-                    forum.put("timeStamp", FieldValue.serverTimestamp());
+                    forum.put("timeStamp", strDate);
 
                     db.collection("forums")
                             .add(forum)

@@ -52,8 +52,8 @@
     <ImageButton
         android:id="@+id/imageButtonDelete"
         style="@android:style/Widget.ImageButton"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:background="@color/white"
         android:scaleType="fitCenter"
         android:src="@drawable/rubbish_bin"

@@ -1,5 +1,6 @@
 package com.example.group20_inclass08;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +10,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.ArrayList;
 
 public class ForumsRecyclerViewAdapter extends RecyclerView.Adapter<ForumsRecyclerViewAdapter.ForumViewHolder> {
     ArrayList<Forum> forums;
     IForumsRecycler mListener;
+    FirebaseAuth mAuth;
 
     public ForumsRecyclerViewAdapter(ArrayList<Forum> forums, IForumsRecycler mListener) {
         this.forums = forums;
@@ -30,6 +38,8 @@ public class ForumsRecyclerViewAdapter extends RecyclerView.Adapter<ForumsRecycl
 
     @Override
     public void onBindViewHolder(@NonNull ForumViewHolder holder, int position) {
+        mAuth = FirebaseAuth.getInstance();
+
         Forum forum = forums.get(position);
         holder.forum = forum;
         holder.textViewTitle.setText(forum.getTitle());
@@ -37,11 +47,11 @@ public class ForumsRecyclerViewAdapter extends RecyclerView.Adapter<ForumsRecycl
         holder.textviewDescription.setText(forum.getDescription());
         holder.textViewTimeStamp.setText(String.valueOf(forum.getTimeStamp()));
 
-//        if (post.getAuthorId().equals(mUserToken.getUserId())) {
-//            holder.imageButtonDelete.setVisibility(View.VISIBLE);
-//        } else {
-//            holder.imageButtonDelete.setVisibility(View.INVISIBLE);
-//        }
+        if(mAuth.getCurrentUser().getUid().equals(forum.getCreatorUid())) {
+            holder.imageButtonDelete.setVisibility(View.VISIBLE);
+        } else {
+            holder.imageButtonDelete.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override

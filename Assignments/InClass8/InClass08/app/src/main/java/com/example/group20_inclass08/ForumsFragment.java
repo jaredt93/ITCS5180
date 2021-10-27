@@ -35,8 +35,6 @@ public class ForumsFragment extends Fragment implements ForumsRecyclerViewAdapte
     LinearLayoutManager layoutManager;
     ForumsRecyclerViewAdapter adapter;
 
-    String creator;
-
     public ForumsFragment() {
         // Required empty public constructor
     }
@@ -67,7 +65,7 @@ public class ForumsFragment extends Fragment implements ForumsRecyclerViewAdapte
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getActivity().setTitle("Forums");
-        getData();
+        getForums();
 
         binding.buttonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,29 +83,8 @@ public class ForumsFragment extends Fragment implements ForumsRecyclerViewAdapte
         });
     }
 
-    private void getData() {
+    private void getForums() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        String id = mAuth.getCurrentUser().getUid();
-        creator = "";
-
-//        db.collection("users").document(id)
-//                .get()
-//                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                        if (task.isSuccessful()) {
-//                            DocumentSnapshot document = task.getResult();
-//                            if (document.exists()) {
-//                                creator = document.getString("name");
-//                                Log.d("demo", "No such document" + creator);
-//                            } else {
-//                                Log.d("demo", "No such document");
-//                            }
-//                        } else {
-//                            Log.d("demo", "get failed with ", task.getException());
-//                        }
-//                    }
-//                });
 
         db.collection("forums")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -116,7 +93,7 @@ public class ForumsFragment extends Fragment implements ForumsRecyclerViewAdapte
                         forums.clear();
 
                         for(QueryDocumentSnapshot document: value) {
-                            forums.add(new Forum(document.getString("title"), document.getString("creator"), document.getString("creatorUid"), document.getString("description"), document.get("timeStamp")));
+                            forums.add(new Forum(document.getString("title"), document.getString("creator"), document.getString("creatorUid"), document.getString("description"), document.get("timeStamp"), document.getId()));
                         }
                         adapter.notifyDataSetChanged();
                     }
@@ -125,7 +102,10 @@ public class ForumsFragment extends Fragment implements ForumsRecyclerViewAdapte
 
     @Override
     public void deleteForum(Forum forum) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+        db.collection("forums").document(forum.getDocId())
+                .delete();
     }
 
 

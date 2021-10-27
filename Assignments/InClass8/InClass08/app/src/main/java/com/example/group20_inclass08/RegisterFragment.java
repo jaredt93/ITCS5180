@@ -19,6 +19,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -69,7 +71,14 @@ public class RegisterFragment extends Fragment {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if(task.isSuccessful()) {
-                                        createUser(name, mAuth.getCurrentUser().getUid());
+                                        FirebaseUser user = mAuth.getCurrentUser();
+
+                                        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                                .setDisplayName(name)
+                                                .build();
+
+                                        user.updateProfile(profileUpdates);
+
                                         mListener.gotoForumsFragment();
                                     } else {
                                         Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -86,23 +95,6 @@ public class RegisterFragment extends Fragment {
                 mListener.gotoLoginFragment();
             }
         });
-    }
-
-    private void createUser(String name, String id) {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        HashMap<String, Object> user = new HashMap<>();
-        user.put("name", name);
-
-        db.collection("users")
-                .document(id)
-                .set(user)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-
-                    }
-                });
     }
 
 

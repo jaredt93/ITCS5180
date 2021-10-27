@@ -1,19 +1,20 @@
 package com.example.group20_inclass08;
 
 public class Forum {
-    String title, creator, creatorUid, description;
+    String title, creator, creatorUid, description, docId;
     Object timeStamp;
 
     public Forum() {
         // empty constructor
     }
 
-    public Forum(String title, String creator, String creatorUid, String description, Object timeStamp) {
+    public Forum(String title, String creator, String creatorUid, String description, Object timeStamp, String docId) {
         this.title = title;
         this.creator = creator;
         this.creatorUid = creatorUid;
         this.description = description;
         this.timeStamp = timeStamp;
+        this.docId = docId;
     }
 
     public String getTitle() {
@@ -54,5 +55,13 @@ public class Forum {
 
     public void setTimeStamp(Object timeStamp) {
         this.timeStamp = timeStamp;
+    }
+
+    public String getDocId() {
+        return docId;
+    }
+
+    public void setDocId(String docId) {
+        this.docId = docId;
     }
 }

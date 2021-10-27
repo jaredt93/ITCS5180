@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Group20_InClass08</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="editTextEmail">Email</string>
+    <string name="buttonLogin">Login</string>
+    <string name="buttonCreateNewAccount">Create New Account</string>
+    <string name="editTextPassword">Password</string>
+    <string name="editTextName">Name</string>
+    <string name="buttonSubmit">Submit</string>
+    <string name="buttonCancel">Cancel</string>
+    <string name="editTextTitle">Forum Title</string>
+    <string name="editTextDescription">Forum Description</string>
+    <string name="buttonLogout">Logout</string>
+    <string name="buttonNewForum">New Forum</string>
+    <string name="textViewTitle">Title</string>
+    <string name="textViewCreator">Creator</string>
+    <string name="textViewDescription">Description</string>
+    <string name="textViewTimeStamp">Time Stamp</string>
+</resources>

@@ -32,6 +32,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.TimeZone;
 
 public class CreateForumFragment extends Fragment {
     FragmentCreateForumBinding binding;
@@ -74,6 +75,7 @@ public class CreateForumFragment extends Fragment {
                     String id = mAuth.getCurrentUser().getUid();
 
                     DateFormat dateFormat = new SimpleDateFormat("M/d/yyyy h:mm a");
+                    dateFormat.setTimeZone(TimeZone.getTimeZone("America/New_York"));
                     Date date = new Date();
                     String strDate = dateFormat.format(date).toString();
 

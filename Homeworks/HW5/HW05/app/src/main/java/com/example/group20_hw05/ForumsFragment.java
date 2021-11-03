@@ -1,4 +1,4 @@
-package com.example.group20_inclass08;
+package com.example.group20_hw05;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -9,16 +9,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.group20_inclass08.databinding.FragmentForumsBinding;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.example.group20_hw05.databinding.FragmentForumsBinding;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -27,7 +23,6 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.Set;
 
 public class ForumsFragment extends Fragment implements ForumsRecyclerViewAdapter.IForumsRecycler {
     FragmentForumsBinding binding;
@@ -88,7 +83,7 @@ public class ForumsFragment extends Fragment implements ForumsRecyclerViewAdapte
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         db.collection("forums")
-                //.orderBy("timeStamp", Query.Direction.DESCENDING)
+                .orderBy("timeStamp", Query.Direction.DESCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -97,7 +92,7 @@ public class ForumsFragment extends Fragment implements ForumsRecyclerViewAdapte
                         for(QueryDocumentSnapshot document: value) {
 
                             //Forum forum = document.toObject(Forum.class)
-                            forums.add(new Forum(document.getString("title"), document.getString("creator"), document.getString("creatorUid"), document.getString("description"), document.get("timeStamp"), document.getId()));
+                            forums.add(new Forum(document.getString("title"), document.getString("creator"), document.getString("creatorUid"), document.getString("description"), document.getTimestamp("timeStamp"), document.getId()));
                         }
                         adapter.notifyDataSetChanged();
                     }

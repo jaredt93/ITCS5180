@@ -1,10 +1,12 @@
-package com.example.group20_inclass08;
+package com.example.group20_hw05;
 
 import com.google.firebase.Timestamp;
 
 public class Forum {
     String title, creator, creatorUid, description, docId;
     Timestamp timeStamp;
+    int likeCount;
+    Boolean liked;
 
     public Forum() {
         // empty constructor
@@ -17,6 +19,8 @@ public class Forum {
         this.description = description;
         this.timeStamp = timeStamp;
         this.docId = docId;
+        this.likeCount = 0;
+        this.liked = false;
     }
 
     public String getTitle() {
@@ -65,5 +69,21 @@ public class Forum {
 
     public void setDocId(String docId) {
         this.docId = docId;
+    }
+
+    public int getLikeCount() {
+        return likeCount;
+    }
+
+    public void setLikeCount(int likeCount) {
+        this.likeCount = likeCount;
+    }
+
+    public Boolean getLiked() {
+        return liked;
+    }
+
+    public void setLiked(Boolean liked) {
+        this.liked = liked;
     }
 }

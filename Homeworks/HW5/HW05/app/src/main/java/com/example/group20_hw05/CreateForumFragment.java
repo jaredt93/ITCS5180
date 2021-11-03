@@ -1,4 +1,4 @@
-package com.example.group20_inclass08;
+package com.example.group20_hw05;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,29 +7,20 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.group20_inclass08.databinding.FragmentCreateForumBinding;
-import com.google.android.gms.tasks.OnCompleteListener;
+import com.example.group20_hw05.databinding.FragmentCreateForumBinding;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreSettings;
-import com.google.type.DateTime;
 
-import java.lang.reflect.Field;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -73,17 +64,14 @@ public class CreateForumFragment extends Fragment {
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
                     String id = mAuth.getCurrentUser().getUid();
 
-                    DateFormat dateFormat = new SimpleDateFormat("M/d/yyyy h:mm a");
-                    Date date = new Date();
-                    String strDate = dateFormat.format(date).toString();
-
                     HashMap<String, Object> forum = new HashMap<>();
                     forum.put("title", title);
                     forum.put("creator", mAuth.getCurrentUser().getDisplayName());
                     forum.put("creatorUid", id);
                     forum.put("description", description);
-                    //forum.put("timeStamp", strDate);
                     forum.put("timeStamp", FieldValue.serverTimestamp());
+                    forum.put("likeCount", 0);
+                    forum.put("liked", false);
 
                     db.collection("forums")
                             .add(forum)

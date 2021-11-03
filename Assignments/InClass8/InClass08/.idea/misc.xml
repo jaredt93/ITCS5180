@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/JWT/Developer/ITCS5180/Assignments/InClass8/InClass08/app/src/main/res/layout/forum_row_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/JWT/Developer/ITCS5180/Assignments/InClass8/InClass08/app/src/main/res/layout/fragment_create_forum.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/JWT/Developer/ITCS5180/Assignments/InClass8/InClass08/app/src/main/res/layout/fragment_forums.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/JWT/Developer/ITCS5180/Assignments/InClass8/InClass08/app/src/main/res/layout/fragment_login.xml" value="0.33" />
+        <entry key="..\:/Users/JWT/Developer/ITCS5180/Assignments/InClass8/InClass08/app/src/main/res/layout/fragment_register.xml" value="0.36666666666666664" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3229166666666667" />
         <entry key="app/src/main/res/layout/forum_row_item.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_create_forum.xml" value="0.3229166666666667" />

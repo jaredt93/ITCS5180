@@ -1,30 +1,20 @@
-package com.example.group20_inclass08;
+package com.example.group20_hw05;
 
 import com.google.firebase.Timestamp;
 
-public class Forum {
-    String title, creator, creatorUid, description, docId;
+public class Comment {
+    String creator, creatorUid, description, docId;
     Timestamp timeStamp;
 
-    public Forum() {
-        // empty constructor
+    public Comment() {
     }
 
-    public Forum(String title, String creator, String creatorUid, String description, Timestamp timeStamp, String docId) {
-        this.title = title;
+    public Comment(String creator, String creatorUid, String description, String docId, Timestamp timeStamp) {
         this.creator = creator;
         this.creatorUid = creatorUid;
         this.description = description;
-        this.timeStamp = timeStamp;
         this.docId = docId;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
+        this.timeStamp = timeStamp;
     }
 
     public String getCreator() {
@@ -51,19 +41,19 @@ public class Forum {
         this.description = description;
     }
 
-    public Timestamp getTimeStamp() {
-        return timeStamp;
-    }
-
-    public void setTimeStamp(Timestamp timeStamp) {
-        this.timeStamp = timeStamp;
-    }
-
     public String getDocId() {
         return docId;
     }
 
     public void setDocId(String docId) {
         this.docId = docId;
+    }
+
+    public Timestamp getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(Timestamp timeStamp) {
+        this.timeStamp = timeStamp;
     }
 }

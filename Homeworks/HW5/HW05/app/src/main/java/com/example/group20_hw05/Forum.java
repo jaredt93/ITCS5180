@@ -1,22 +1,27 @@
-package com.example.group20_inclass08;
+package com.example.group20_hw05;
 
 import com.google.firebase.Timestamp;
 
-public class Forum {
+import java.io.Serializable;
+import java.util.HashMap;
+
+public class Forum implements Serializable {
     String title, creator, creatorUid, description, docId;
     Timestamp timeStamp;
+    HashMap<String, Object> likedBy;
 
     public Forum() {
         // empty constructor
     }
 
-    public Forum(String title, String creator, String creatorUid, String description, Timestamp timeStamp, String docId) {
+    public Forum(String title, String creator, String creatorUid, String description, Timestamp timeStamp, String docId, HashMap<String, Object> likedBy) {
         this.title = title;
         this.creator = creator;
         this.creatorUid = creatorUid;
         this.description = description;
         this.timeStamp = timeStamp;
         this.docId = docId;
+        this.likedBy = likedBy;
     }
 
     public String getTitle() {
@@ -65,5 +70,13 @@ public class Forum {
 
     public void setDocId(String docId) {
         this.docId = docId;
+    }
+
+    public HashMap<String, Object> getLikedBy() {
+        return likedBy;
+    }
+
+    public void setLikedBy(HashMap<String, Object>  likedBy) {
+        this.likedBy = likedBy;
     }
 }

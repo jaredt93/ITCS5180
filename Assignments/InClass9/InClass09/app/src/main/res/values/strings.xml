@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Group20_InClass09</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="textViewCourses">Courses</string>
+    <string name="textViewGPA">GPA: </string>
+    <string name="textViewHours">Hours: </string>
+    <string name="textViewGrade">A</string>
+    <string name="textViewTitle">XXXX ####</string>
+    <string name="textViewDescription">Description</string>
+    <string name="textViewCreditHours"># Credit Hours</string>
+    <string name="editTextCourseNumber">Course Number</string>
+    <string name="editTextCourseName">Course Name</string>
+    <string name="editTextCreditHours">Credit Hours</string>
+    <string name="textViewCourseGrade">Course Grade</string>
+    <string name="radioButtonB">B</string>
+    <string name="radioButtonA">A</string>
+    <string name="radioButtonC">C</string>
+    <string name="radioButtonD">D</string>
+    <string name="buttonSubmit">Submit</string>
+    <string name="buttonCancel">Cancel</string>
+    <string name="RadioButtonF">F</string>
+</resources>
